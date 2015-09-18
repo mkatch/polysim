@@ -99,9 +99,10 @@ simplification. Given a polygonal line, referred to as <em>path</em>, we produce
 a visually similar path, but with less vertices. The restruction criterion is
 <em>threshold</em>, which specifies the maximal distance between a point from
 original path to the simplified path.</p>
-<p>The algorithm is, implemented by <a href="PathSimplifier.html"><code>PathSimplifier</code></a>. It
-receives an instance of <a href="PathSimplifier.html"><code>Path</code></a> as input and provides
-a simplified path as result. The simplest use case may be as follows:</p>
+<p>The algorithm is, implemented by
+<a href="docs/PathSimplifier.html"><code>PathSimplifier</code></a>. It receives an instance of
+<a href="docs/Path.html"><code>Path</code></a> as input and provides a simplified path as result.
+The simplest use case may be as follows:</p>
 <pre><code>Path path = <span class="hljs-keyword">new</span> Path();
 <span class="hljs-keyword">float</span> threshold = <span class="hljs-number">0.3f</span>;
 PathSimplifier simplifier = <span class="hljs-keyword">new</span> PathSimplifier(path, threshold);
@@ -110,7 +111,8 @@ path.addPoint(<span class="hljs-number">1</span>, <span class="hljs-number">2</s
 . . .
 path.addPoint(-<span class="hljs-number">4</span>, <span class="hljs-number">1</span>);
 Path simple = simplifier.getSimplified();
-</code></pre><p>For details, refer to the implementation.</p>
+</code></pre><p>The simplifier may be attached to the path at any moment and the simplified
+path may be retrievied at any time. For details, refer to the implementation.</p>
 <p><em>This file contains the implementation of the demo app. No documentation
 provided, sorry.</em></p>
 <p><img src="screenshot.png" alt="Demo app screenshot"></p>
