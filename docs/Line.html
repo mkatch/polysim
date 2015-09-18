@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Line and its Coordinate System</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="GUI.html">
+                  GUI.pde
+                </a>
+              
+                
+                <a class="source" href="Line.html">
+                  Line.pde
+                </a>
+              
+                
+                <a class="source" href="LineFitter.html">
+                  LineFitter.pde
+                </a>
+              
+                
+                <a class="source" href="Math.html">
+                  Math.pde
+                </a>
+              
+                
+                <a class="source" href="Path.html">
+                  Path.pde
+                </a>
+              
+                
+                <a class="source" href="PathSimplifier.html">
+                  PathSimplifier.pde
+                </a>
+              
+                
+                <a class="source" href="PolylineSimplification.html">
+                  PolylineSimplification.pde
+                </a>
+              
+                
+                <a class="source" href="SimplePathHull.html">
+                  SimplePathHull.pde
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h1 id="line-and-its-coordinate-system">Line and its Coordinate System</h1>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Line in 2D cartesian spacecan be defined implicitly by equation</p>
+<pre><code>                    ax + by + c = <span class="hljs-number">0</span>.
+</code></pre><p>Such implicit definition is associated with a <em>line coordinate system</em>. Every
+plane point (<em>x</em>, <em>y</em>) be uniquely represented in the line’s (<em>s</em>, <em>t</em>)
+coordinates as follows:</p>
+<pre><code>                  (x, y) = O + sT + tN,
+</code></pre><p>where <em>O</em> is the origin of the coordinate system and is defined as the
+projection of cartesian origin (0, 0) onto the line, whereas,
+<em>T</em> = (-<em>b</em>, <em>a</em>) and <em>N</em> = (<em>a</em>, <em>b</em>) are the tangent and normal vectors of
+the line.</p>
+<p><strong>Note:</strong> Different implicit definitions of the same line may yield different
+coordinate systems.</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <h2 id="line-class">Line Class</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Represents an implicit line definition and provides routines to work with
+its coordinate system</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Line</span>
+</span>{
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> a;
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> b;
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> c;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Creates line with given coefficients</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Line</span><span class="hljs-params">(<span class="hljs-keyword">float</span> a, <span class="hljs-keyword">float</span> b, <span class="hljs-keyword">float</span> c)</span> </span>{
+    <span class="hljs-keyword">this</span>.a = a;
+    <span class="hljs-keyword">this</span>.b = b;
+    <span class="hljs-keyword">this</span>.c = c;
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Gets the line origin defined as the projection of the (0, 0) cartesian
+point onto the line. This is the origin of this line’s coordinate system.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">public</span> PVector <span class="hljs-title">origin</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">float</span> c1 = -c / (a * a + b * b);
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> PVector(a * c1, b * c1);
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Gets the (<code>-b</code>, <code>a</code>) vector. This is the base vector for the <em>s</em> line
+coordinate.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">public</span> PVector <span class="hljs-title">tangent</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> PVector(-b, a);
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Gets the (<code>a</code>, <code>b</code>) vector. This is the base vector for the <em>t</em> line
+coordinate.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">public</span> PVector <span class="hljs-title">normal</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> PVector(a, b);
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Converts point from (<em>x</em>, <em>y</em>) cartesian coordinates to (s, t) line
+coordinates</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">public</span> LVector <span class="hljs-title">map</span><span class="hljs-params">(PVector p)</span> </span>{
+    <span class="hljs-keyword">float</span> c1 = a * a + b * b;
+    <span class="hljs-keyword">float</span> t = (a * p.x + b * p.y + c) / c1;
+    <span class="hljs-keyword">float</span> c2 = c / c1 - t;
+    <span class="hljs-keyword">float</span> s = abs(a) &gt; abs(b) ? (p.y + b * c2) / a : -(p.x + a * c2) / b;
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> LVector(s, t);
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Converts point from (<em>s</em>, <em>t</em>) line coordinates to cartesian (<em>x</em>, <em>y</em>)
+coordinates</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">public</span> PVector <span class="hljs-title">unmap</span><span class="hljs-params">(LVector l)</span> </span>{
+    <span class="hljs-keyword">return</span> unmap(l.s, l.t);
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Converts point from (<em>s</em>, <em>t</em>) line coordinates to cartesian (<em>x</em>, <em>y</em>)
+coordinates</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">public</span> PVector <span class="hljs-title">unmap</span><span class="hljs-params">(<span class="hljs-keyword">float</span> s, <span class="hljs-keyword">float</span> t)</span> </span>{
+    <span class="hljs-keyword">final</span> <span class="hljs-keyword">float</span> c1 = t - c / (a * a + b * b);
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> PVector(c1 * a - s * b, c1 * b + s * a);
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Converts point given in this line’s coordinates to the coordinate
+system of another line</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">public</span> LVector <span class="hljs-title">remap</span><span class="hljs-params">(Line other, LVector l)</span> </span>{
+    <span class="hljs-keyword">return</span> remap(other, l.s, l.t);
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Converts point given in this line’s coordinates to the coordinate
+system of another line</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">public</span> LVector <span class="hljs-title">remap</span><span class="hljs-params">(Line other, <span class="hljs-keyword">float</span> s, <span class="hljs-keyword">float</span> t)</span> </span>{
+    <span class="hljs-keyword">return</span> map(other.unmap(s, t));
+  }
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <h2 id="lvector-class">LVector Class</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>Represents a point in line (<em>s</em>, <em>t</em>) coordinates</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LVector</span>
+</span>{
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> s;
+  <span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> t;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>Creates new point with given coordinates</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">LVector</span><span class="hljs-params">(<span class="hljs-keyword">float</span> s, <span class="hljs-keyword">float</span> t)</span> </span>{
+    <span class="hljs-keyword">this</span>.s = s;
+    <span class="hljs-keyword">this</span>.t = t;
+  }
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

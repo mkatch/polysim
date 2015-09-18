@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Math Utilities</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page_wrapper">
+            <div id="jump_page">
+              
+                
+                <a class="source" href="GUI.html">
+                  GUI.pde
+                </a>
+              
+                
+                <a class="source" href="Line.html">
+                  Line.pde
+                </a>
+              
+                
+                <a class="source" href="LineFitter.html">
+                  LineFitter.pde
+                </a>
+              
+                
+                <a class="source" href="Math.html">
+                  Math.pde
+                </a>
+              
+                
+                <a class="source" href="Path.html">
+                  Path.pde
+                </a>
+              
+                
+                <a class="source" href="PathSimplifier.html">
+                  PathSimplifier.pde
+                </a>
+              
+                
+                <a class="source" href="PolylineSimplification.html">
+                  PolylineSimplification.pde
+                </a>
+              
+                
+                <a class="source" href="SimplePathHull.html">
+                  SimplePathHull.pde
+                </a>
+              
+            </div>
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h1 id="math-utilities">Math Utilities</h1>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <h2 id="geometry-class">Geometry Class</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Provides elementary geometrical operations</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Geometry</span>
+</span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Computes the <em>per product</em> (aka. <em>cross product</em>) of two vectors</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">float</span> <span class="hljs-title">per</span><span class="hljs-params">(PVector u, PVector v)</span> </span>{
+    <span class="hljs-keyword">return</span> u.x * v.y - v.x * u.y;
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Produces a vector spanned between two points</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> PVector <span class="hljs-title">span</span><span class="hljs-params">(PVector a, PVector b)</span> </span>{
+    <span class="hljs-keyword">return</span> PVector.sub(b, a);
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Tests which side of line a given point lies at.</p>
+<ul>
+<li><p>Returns positive value if <code>p</code> is on the left side of line through
+<code>a</code> and <code>b</code>.</p>
+</li>
+<li><p>Returns negative value if <code>p</code> is on the right side of line through
+<code>a</code> and <code>b</code>.</p>
+</li>
+<li><p>Returns 0 if <code>a</code>, <code>b</code> and <code>p</code> are colinear.</p>
+</li>
+</ul>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">float</span> <span class="hljs-title">side</span><span class="hljs-params">(PVector a, PVector b, PVector p)</span> </span>{
+    <span class="hljs-keyword">return</span> per(span(a, b), span(a, p));
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Computes the squared distance between two points</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">float</span> <span class="hljs-title">distSq</span><span class="hljs-params">(PVector a, PVector b)</span> </span>{
+    <span class="hljs-keyword">float</span> dx = a.x - b.x;
+    <span class="hljs-keyword">float</span> dy = a.y - b.y;
+    <span class="hljs-keyword">return</span> dx * dx + dy * dy;
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Tests whether segments <code>ab</code> and <code>cd</code> intersect</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">intersect</span><span class="hljs-params">(PVector a, PVector b, PVector c, PVector d)</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>The segments intersect only if the endpoints of one are on opposite sides
+of the other (both ways)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    PVector ab = span(a, b), ac = span(a, c), ad = span(a, d);
+    <span class="hljs-keyword">float</span> sab = per(ab, ac) * per(ab, ad);
+    <span class="hljs-keyword">if</span> (sab &gt; <span class="hljs-number">0</span>)
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+    PVector cd = span(c, d), cb = span(c, b);
+    <span class="hljs-keyword">float</span> scd = per(cd, ac) * per(cd, cb);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Note that <code>ac</code> is used instead of <code>ca</code> in the above line, thus reversing
+the following condition</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> (scd &lt; <span class="hljs-number">0</span>)
+      <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>When the points are colinear, we have to check if the segments overlap</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> (sab == <span class="hljs-number">0</span> &amp;&amp; scd == <span class="hljs-number">0</span>) {
+      <span class="hljs-keyword">float</span> abSq = ab.magSq();
+      <span class="hljs-keyword">return</span> ac.magSq() &lt;= abSq || ad.magSq() &lt; abSq;
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Returns a projection of point onto a line</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> PVector <span class="hljs-title">project</span><span class="hljs-params">(PVector p, Line l)</span> </span>{
+    <span class="hljs-keyword">float</span> t = -(l.a * p.x + l.b * p.y + l.c) / (l.a * l.a + l.b * l.b);
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> PVector(p.x + t * l.a, p.y + t * l.b);
+  }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>Returns the intersection point of two lines. The result may contain ifinities
+if the lines are parallel, or NaNs if they are identical.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> PVector <span class="hljs-title">intersection</span><span class="hljs-params">(Line l1, Line l2)</span> </span>{
+    <span class="hljs-keyword">float</span> a11 = l1.a, a12 = l1.b, b1 = -l1.c;
+    <span class="hljs-keyword">float</span> a21 = l2.a, a22 = l2.b, b2 = -l2.c;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>We now solve a linear equation <code>Ax = b</code>, where <code>A = [a11 a12; a21 a22]</code>,
+<code>x = [x1; x2]</code> <code>b = [b1; b2]</code>. We use Gaussian elimination method with
+full pivot selection.</p>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <p>We rearrange the equation so that the pivot is <code>a11</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">boolean</span> swapResult = <span class="hljs-keyword">false</span>;
+    <span class="hljs-keyword">if</span> (max(abs(a11), abs(a12)) &lt; max(abs(a21), abs(a22))) {
+      <span class="hljs-keyword">float</span> tmp;
+      tmp = a11; a11 = a21; a21 = tmp;
+      tmp = a12; a12 = a22; a22 = tmp;
+      tmp = b1; b1 = b2; b2 = tmp;
+    }
+    <span class="hljs-keyword">if</span> (abs(a11) &lt; abs(a12)) {
+      <span class="hljs-keyword">float</span> tmp;
+      tmp = a11; a11 = a12; a12 = tmp;
+      tmp = a21; a21 = a22; a22 = tmp;
+      swapResult = <span class="hljs-keyword">true</span>;
+    }
+
+    a22 -= a12 * a21 / a11;
+    b2 -= b1 * a21 / a11;
+    <span class="hljs-keyword">float</span> x2 = b2 / a22;
+    <span class="hljs-keyword">float</span> x1 = (b1 - a12 * x2) / a11;
+
+    <span class="hljs-keyword">return</span> swapResult ? <span class="hljs-keyword">new</span> PVector(x2, x1) : <span class="hljs-keyword">new</span> PVector(x1, x2);
+  }
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>Gets the smallest of five values</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">float</span> <span class="hljs-title">min</span><span class="hljs-params">(<span class="hljs-keyword">float</span> x1, <span class="hljs-keyword">float</span> x2, <span class="hljs-keyword">float</span> x3, <span class="hljs-keyword">float</span> x4, <span class="hljs-keyword">float</span> x5)</span> </span>{
+  <span class="hljs-keyword">return</span> min(min(x1, x2, x3), min(x4, x5));
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <p>Gets the biggest of five values</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">float</span> <span class="hljs-title">max</span><span class="hljs-params">(<span class="hljs-keyword">float</span> x1, <span class="hljs-keyword">float</span> x2, <span class="hljs-keyword">float</span> x3, <span class="hljs-keyword">float</span> x4, <span class="hljs-keyword">float</span> x5)</span> </span>{
+  <span class="hljs-keyword">return</span> max(max(x1, x2, x3), max(x4, x5));
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>Truncates value to given range</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">float</span> <span class="hljs-title">clamp</span> <span class="hljs-params">(<span class="hljs-keyword">float</span> x, <span class="hljs-keyword">float</span> a, <span class="hljs-keyword">float</span> b)</span> </span>{
+  <span class="hljs-keyword">if</span> (x &lt; a)
+    <span class="hljs-keyword">return</span> a;
+  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (b &lt; x)
+    <span class="hljs-keyword">return</span> b;
+  <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> x;
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p>Truncates value to given range</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> <span class="hljs-title">clamp</span> <span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span> </span>{
+  <span class="hljs-keyword">if</span> (x &lt; a)
+    <span class="hljs-keyword">return</span> a;
+  <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (b &lt; x)
+    <span class="hljs-keyword">return</span> b;
+  <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> x;
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <p>Determines whether a <code>PVector</code> contains infinities or NaNs</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isSingular</span><span class="hljs-params">(PVector v)</span> </span>{
+  <span class="hljs-keyword">return</span> Float.isInfinite(v.x) || Float.isNaN(v.x)
+      || Float.isInfinite(v.y) || Float.isNaN(v.y);
+}</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
