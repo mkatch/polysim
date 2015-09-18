@@ -6,11 +6,17 @@
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
+  <link rel="stylesheet" href="gh-fork-ribbon.css" />
 </head>
 <body>
   <div id="container">
+    <div class="github-fork-ribbon-wrapper left-bottom">
+        <div class="github-fork-ribbon">
+            <a href="https://github.com/mkacz91/PolylineSimplification">Fork me on GitHub</a>
+        </div>
+    </div>
     <div id="background"></div>
-    
+
       <ul id="jump_to">
         <li>
           <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
@@ -18,72 +24,72 @@
           <div id="jump_wrapper">
           <div id="jump_page_wrapper">
             <div id="jump_page">
-              
-                
+
+
                 <a class="source" href="GUI.html">
                   GUI.pde
                 </a>
-              
-                
+
+
                 <a class="source" href="Line.html">
                   Line.pde
                 </a>
-              
-                
+
+
                 <a class="source" href="LineFitter.html">
                   LineFitter.pde
                 </a>
-              
-                
+
+
                 <a class="source" href="Math.html">
                   Math.pde
                 </a>
-              
-                
+
+
                 <a class="source" href="Path.html">
                   Path.pde
                 </a>
-              
-                
+
+
                 <a class="source" href="PathSimplifier.html">
                   PathSimplifier.pde
                 </a>
-              
-                
-                <a class="source" href="PolylineSimplification.html">
+
+
+                <a class="source" href="../index.html">
                   PolylineSimplification.pde
                 </a>
-              
-                
+
+
                 <a class="source" href="SimplePathHull.html">
                   SimplePathHull.pde
                 </a>
-              
+
             </div>
           </div>
         </li>
       </ul>
-    
+
     <ul class="sections">
-        
-        
-        
+
+
+
         <li id="section-1">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
               <h1 id="path-simplifier">Path Simplifier</h1>
 
             </div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-2">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
@@ -142,26 +148,26 @@ step is pessimistically linear in time, but the practical complexity is much
 better.</p>
 
             </div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-3">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
               <h2 id="pathsimplifier-class">PathSimplifier Class</h2>
 
             </div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-4">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
@@ -170,47 +176,47 @@ as a listener and then adjusts the simplified path online on any
 modification.</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre><span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PathSimplifier</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">IPathListener</span>
 </span>{</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-5">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
               <p>Additional information stored for each point of the original path</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PointTag</span>
   </span>{</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-6">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
               <p>Distance to the starting point in the admissible segment graph</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> dist;</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-7">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
@@ -218,15 +224,15 @@ modification.</p>
 segment graph</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> next;</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-8">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
@@ -234,7 +240,7 @@ segment graph</p>
 intersection with another non-adjecent segment later in the path.</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> cut;
 
     <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">PointTag</span><span class="hljs-params">(<span class="hljs-keyword">int</span> dist, <span class="hljs-keyword">int</span> next)</span> </span>{
@@ -243,28 +249,28 @@ intersection with another non-adjecent segment later in the path.</p>
       <span class="hljs-keyword">this</span>.cut = <span class="hljs-keyword">false</span>;
     }
   }</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-9">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
               <p>The original path</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> Path path;</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-10">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
@@ -274,15 +280,15 @@ path, it may be smaller, in order to artificially simulate the construction
 process.</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> pathLength;</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-11">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
@@ -292,15 +298,15 @@ selected path segments. It is registered as listener to <code>path</code> before
 be assumed to already be in the newest state.</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> LineFitter fitter;</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-12">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
@@ -308,15 +314,15 @@ be assumed to already be in the newest state.</p>
 indexing of <code>tags</code> is identical to that of <code>path</code>‘s.</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> List&lt;PointTag&gt; tags = <span class="hljs-keyword">new</span> ArrayList&lt;PointTag&gt;();</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-13">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
@@ -324,15 +330,15 @@ indexing of <code>tags</code> is identical to that of <code>path</code>‘s.</p>
 simplified path.</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">float</span> thresholdSq;</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-14">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
@@ -341,92 +347,92 @@ simplified path.</p>
 debugging.</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">enum</span> Event
   {</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-15">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-15">&#182;</a>
               </div>
               <p>The segment obeys all rules from 1 to 4</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>    ACCEPT,</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-16">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
               <p>Point <code>i</code> takes part in an intesection (rule 1 violated)</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>    CUT,</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-17">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
               <p>The distance to optimal line exceeds threshold (rule 2 violated)</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>    THRESHOLD,</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-18">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-18">&#182;</a>
               </div>
               <p>Point <code>i</code> is not a pioneer (rule 3 violated)</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>    PIONEER_WEAK,</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-19">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-19">&#182;</a>
               </div>
               <p>Point <code>j</code> is not a pioneer (rule 4 violated)</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>    PIONEER_STRONG
   }</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-20">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-20">&#182;</a>
               </div>
@@ -434,15 +440,15 @@ debugging.</p>
 <code>onAddPoint()</code>. Used for visualization purposes and debugging.</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> List&lt;Event&gt; trace = <span class="hljs-keyword">new</span> ArrayList&lt;Event&gt;();</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-21">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-21">&#182;</a>
               </div>
@@ -450,19 +456,19 @@ debugging.</p>
 the maximal distance between the path points and the simplified path.</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">PathSimplifier</span><span class="hljs-params">(Path path, <span class="hljs-keyword">float</span> threshold)</span> </span>{
     <span class="hljs-keyword">this</span>.path = path;
     <span class="hljs-keyword">this</span>.fitter = <span class="hljs-keyword">new</span> LineFitter(path);
     <span class="hljs-keyword">this</span>.thresholdSq = threshold * threshold;
     path.addListener(<span class="hljs-keyword">this</span>);</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-22">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-22">&#182;</a>
               </div>
@@ -471,7 +477,7 @@ construction steps that have taken place before this simplifier was
 created</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>    onClear(path);
     <span class="hljs-keyword">for</span> (PVector p : path)
       onAddPoint(path, p);
@@ -504,13 +510,13 @@ created</p>
     <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = j - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; --i) {
       PVector pi = path.point(i);
       PointTag ti = tags.get(i);</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-23">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-23">&#182;</a>
               </div>
@@ -518,7 +524,7 @@ created</p>
 the path to <code>j</code>, because <code>hull</code> only handles simple polylines.</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">if</span> (
         ti.cut ||
         i &lt; j - <span class="hljs-number">2</span> &amp;&amp;
@@ -528,13 +534,13 @@ the path to <code>j</code>, because <code>hull</code> only handles simple polyli
         trace.add(Event.CUT);
         <span class="hljs-keyword">break</span>;
       }</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-24">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-24">&#182;</a>
               </div>
@@ -542,20 +548,20 @@ the path to <code>j</code>, because <code>hull</code> only handles simple polyli
 approximation and stop if the threshold is violated</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>      Line line = fitter.fitLine(i, j);
       errorBox.extend(line, pi);
       <span class="hljs-keyword">if</span> (errorBox.error() &gt; thresholdSq) {
         trace.add(Event.THRESHOLD);
         <span class="hljs-keyword">break</span>;
       }</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-25">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-25">&#182;</a>
               </div>
@@ -565,7 +571,7 @@ a pioneer, then it will never get back to being one, so we can break
 right here.</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>      SimplePathHull.Node ni = hull.offer(pi);
       <span class="hljs-keyword">if</span> (ni == <span class="hljs-keyword">null</span> || !isPioneer(line, ni)) {
         trace.add(Event.PIONEER_WEAK);
@@ -585,13 +591,13 @@ right here.</p>
 
     tags.add(<span class="hljs-keyword">new</span> PointTag(dist + <span class="hljs-number">1</span>, next));
   }</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-26">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-26">&#182;</a>
               </div>
@@ -599,17 +605,17 @@ right here.</p>
 a pioneer with respect to that line</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPioneer</span><span class="hljs-params">(Line line, SimplePathHull.Node n)</span> </span>{
     <span class="hljs-keyword">if</span> (!n.isValid())
       <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-27">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-27">&#182;</a>
               </div>
@@ -617,38 +623,38 @@ a pioneer with respect to that line</p>
 adjecent hull points lie on the same side of its projection</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>    PVector t = line.tangent();
     <span class="hljs-keyword">float</span> dp = PVector.dot(t, Geometry.span(n.pos(), n.prev().pos()));
     <span class="hljs-keyword">float</span> dn = PVector.dot(t, Geometry.span(n.pos(), n.next().pos()));
     <span class="hljs-keyword">return</span> dp * dn &gt;= <span class="hljs-number">0</span>;
   }</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-28">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-28">&#182;</a>
               </div>
               <p>Retrieves the simplified path</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">public</span> Path <span class="hljs-title">getSimplified</span><span class="hljs-params">()</span> </span>{
     <span class="hljs-keyword">if</span> (pathLength &lt;= <span class="hljs-number">1</span>)
       <span class="hljs-keyword">return</span> path;
 
     Path result = <span class="hljs-keyword">new</span> Path();</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-29">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-29">&#182;</a>
               </div>
@@ -659,7 +665,7 @@ point are projections of the first and last point of the original path
 onto the corresponding lines.</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">int</span> j = pathLength - <span class="hljs-number">1</span>;
     <span class="hljs-keyword">int</span> i = tags.get(j).next;
     Line line = fitter.fitLine(i, j);
@@ -671,13 +677,13 @@ onto the corresponding lines.</p>
       Line prevLine = line;
       line = fitter.fitLine(i, j);
       PVector p = Geometry.intersection(line, prevLine);</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-30">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-30">&#182;</a>
               </div>
@@ -687,7 +693,7 @@ condition. Honestly, just adding <code>p</code>, only guarantees that we are wit
 threshold of the original path.</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>      <span class="hljs-keyword">if</span> (isSingular(p) || Geometry.distSq(p, pj) &gt; <span class="hljs-number">4</span> * thresholdSq)
         result.addPoint(pj);
       <span class="hljs-keyword">else</span>
@@ -698,26 +704,26 @@ threshold of the original path.</p>
     <span class="hljs-keyword">return</span> result;
   }
 }</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-31">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-31">&#182;</a>
               </div>
               <h2 id="errorbox-class">ErrorBox Class</h2>
 
             </div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-32">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-32">&#182;</a>
               </div>
@@ -726,61 +732,61 @@ positions of points of a given set. For detailed explanation of line
 coordinates, see: <a href="Line.html"><code>Line</code></a>.</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ErrorBox</span>
 </span>{</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-33">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-33">&#182;</a>
               </div>
               <p>Line in which cooordinate system this rectangle is defined</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">private</span> Line line;</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-34">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-34">&#182;</a>
               </div>
               <p>Minimum and maximum <em>s</em> coordinate</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">float</span> s0, s1;</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-35">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-35">&#182;</a>
               </div>
               <p>Minimum and maximum <em>t</em> coordinate</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">float</span> t0, t1;</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-36">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-36">&#182;</a>
               </div>
@@ -788,20 +794,20 @@ coordinates, see: <a href="Line.html"><code>Line</code></a>.</p>
 a single point</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ErrorBox</span><span class="hljs-params">(Line line, PVector p)</span> </span>{
     <span class="hljs-keyword">this</span>.line = line;
     LVector l = line.map(p);
     <span class="hljs-keyword">this</span>.s0 = <span class="hljs-keyword">this</span>.s1 = l.s;
     <span class="hljs-keyword">this</span>.t0 = <span class="hljs-keyword">this</span>.t1 = l.t;
   }</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-37">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-37">&#182;</a>
               </div>
@@ -809,7 +815,7 @@ a single point</p>
 converts the representation to coordinate system of a new line.</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">extend</span><span class="hljs-params">(Line line, PVector p)</span> </span>{
     LVector l = line.map(p);
     LVector l00 = line.remap(<span class="hljs-keyword">this</span>.line, s0, t0);
@@ -823,13 +829,13 @@ converts the representation to coordinate system of a new line.</p>
     t0 = min(l.t, l00.t, l01.t, l10.t, l11.t);
     t1 = max(l.t, l00.t, l01.t, l10.t, l11.t);
   }</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-38">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-38">&#182;</a>
               </div>
@@ -837,24 +843,24 @@ converts the representation to coordinate system of a new line.</p>
 inside the rectangle, and the line defining its coordinate system</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> <span class="hljs-title">error</span><span class="hljs-params">()</span> </span>{
     <span class="hljs-keyword">return</span> max(t0 * t0, t1 * t1) * (line.a * line.a + line.b * line.b);
   }</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-39">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-39">&#182;</a>
               </div>
               <p>Gets the four rectangle vertices in cartesian coordinate system</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">public</span> PVector[] getCartesianCorners() {
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> PVector[] {
       line.unmap(s0, t0),
@@ -864,9 +870,9 @@ inside the rectangle, and the line defining its coordinate system</p>
     };
   }
 }</pre></div></div>
-            
+
         </li>
-        
+
     </ul>
   </div>
 </body>

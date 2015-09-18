@@ -6,11 +6,17 @@
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
+  <link rel="stylesheet" href="gh-fork-ribbon.css" />
 </head>
 <body>
   <div id="container">
+    <div class="github-fork-ribbon-wrapper left-bottom">
+        <div class="github-fork-ribbon">
+            <a href="https://github.com/mkacz91/PolylineSimplification">Fork me on GitHub</a>
+        </div>
+    </div>
     <div id="background"></div>
-    
+
       <ul id="jump_to">
         <li>
           <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
@@ -18,72 +24,72 @@
           <div id="jump_wrapper">
           <div id="jump_page_wrapper">
             <div id="jump_page">
-              
-                
+
+
                 <a class="source" href="GUI.html">
                   GUI.pde
                 </a>
-              
-                
+
+
                 <a class="source" href="Line.html">
                   Line.pde
                 </a>
-              
-                
+
+
                 <a class="source" href="LineFitter.html">
                   LineFitter.pde
                 </a>
-              
-                
+
+
                 <a class="source" href="Math.html">
                   Math.pde
                 </a>
-              
-                
+
+
                 <a class="source" href="Path.html">
                   Path.pde
                 </a>
-              
-                
+
+
                 <a class="source" href="PathSimplifier.html">
                   PathSimplifier.pde
                 </a>
-              
-                
-                <a class="source" href="PolylineSimplification.html">
+
+
+                <a class="source" href="../index.html">
                   PolylineSimplification.pde
                 </a>
-              
-                
+
+
                 <a class="source" href="SimplePathHull.html">
                   SimplePathHull.pde
                 </a>
-              
+
             </div>
           </div>
         </li>
       </ul>
-    
+
     <ul class="sections">
-        
-        
-        
+
+
+
         <li id="section-1">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
               <h1 id="linear-approximation">Linear Approximation</h1>
 
             </div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-2">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
@@ -102,26 +108,26 @@ optimal approximation for any continuous subsequence of points in constant
 time.</p>
 
             </div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-3">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
               </div>
               <h2 id="linefitter-class">LineFitter Class</h2>
 
             </div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-4">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
@@ -130,16 +136,16 @@ a subsequence of path points. Can be attached to a <code>Path</code> object, thu
 the linear approximation readily avilable after any modification.</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre><span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LineFitter</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">IPathListener</span>
 </span>{</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-5">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
@@ -148,106 +154,106 @@ to <code>path.length()</code> but in the initial steps, when starting with a non
 path, it may be smaller to artificially simulate the construction process.</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> pathLength;</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-6">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
               <p>Partial sums of the point x coordinates</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">private</span> FloatList sumsX = <span class="hljs-keyword">new</span> FloatList();</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-7">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
               <p>Partial sums of the point y coordinates</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">private</span> FloatList sumsY = <span class="hljs-keyword">new</span> FloatList();</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-8">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
               <p>Partial sums of the squares of point x coordinates</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">private</span> FloatList sumsXX = <span class="hljs-keyword">new</span> FloatList();</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-9">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
               <p>Partial sums of the squares of point y coordinates</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">private</span> FloatList sumsYY = <span class="hljs-keyword">new</span> FloatList();</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-10">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-10">&#182;</a>
               </div>
               <p>Partial sums of the products of point coordinates</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-keyword">private</span> FloatList sumsXY = <span class="hljs-keyword">new</span> FloatList();</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-11">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-11">&#182;</a>
               </div>
               <p>Creates new fitter attached to given path</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">LineFitter</span><span class="hljs-params">(Path path)</span> </span>{
     path.addListener(<span class="hljs-keyword">this</span>);</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-12">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-12">&#182;</a>
               </div>
@@ -255,7 +261,7 @@ path, it may be smaller to artificially simulate the construction process.</p>
 construction steps that have taken place before this fitter was created</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>    onClear(path);
     <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; path.length(); ++i)
       onAddPoint(path, path.point(i));
@@ -280,30 +286,30 @@ construction steps that have taken place before this fitter was created</p>
     sumsXY.append(sumsXY.get(i) + x * y);
     ++pathLength;
   }</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-13">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-13">&#182;</a>
               </div>
               <p>Gets the line approximation for the whole path</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">public</span> Line <span class="hljs-title">fitLine</span><span class="hljs-params">()</span> </span>{
     <span class="hljs-keyword">return</span> fitLine(<span class="hljs-number">0</span>, pathLength - <span class="hljs-number">1</span>);
   }</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-14">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-14">&#182;</a>
               </div>
@@ -311,7 +317,7 @@ construction steps that have taken place before this fitter was created</p>
 ending at index <code>j</code>.</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>  <span class="hljs-function"><span class="hljs-keyword">public</span> Line <span class="hljs-title">fitLine</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j)</span> </span>{
     <span class="hljs-keyword">return</span> fitLine(
       rangeSum(sumsX, i, j), rangeSum(sumsY, i, j),
@@ -329,13 +335,13 @@ ending at index <code>j</code>.</p>
   )</span> </span>{
     <span class="hljs-keyword">if</span> (n &lt;= <span class="hljs-number">0</span>)
       <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Line(<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, <span class="hljs-number">0</span>);</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-15">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-15">&#182;</a>
               </div>
@@ -344,16 +350,16 @@ from the Cauchy-Schwarz inequality, but we want to play safe in case of
 floating point errors</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">float</span> fa = max(n * sumXX - sumX * sumX, <span class="hljs-number">0</span>);
     <span class="hljs-keyword">float</span> fb = max(n * sumYY - sumY * sumY, <span class="hljs-number">0</span>);</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-16">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-16">&#182;</a>
               </div>
@@ -362,16 +368,16 @@ The returned line direction is difficult to compute, so we just make sure the
 line we return passes near the points. Case <code>n == 1</code> is also handled here.</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> (fa &lt;= Float.MIN_NORMAL &amp;&amp; fb &lt;= Float.MIN_NORMAL)
       <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Line(-<span class="hljs-number">1</span>, -<span class="hljs-number">1</span>, (sumX + sumY) / n);</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-17">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-17">&#182;</a>
               </div>
@@ -379,7 +385,7 @@ line we return passes near the points. Case <code>n == 1</code> is also handled 
 choose the one that is numerically safer.</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> (fa &lt; fb) {
       <span class="hljs-keyword">float</span> a = <span class="hljs-number">1.0f</span>;
       <span class="hljs-keyword">float</span> b = (sumX * sumY - n * sumXY) / fb;
@@ -397,9 +403,9 @@ choose the one that is numerically safer.</p>
     <span class="hljs-keyword">return</span> sums.get(j + <span class="hljs-number">1</span>) - sums.get(i);
   }
 }</pre></div></div>
-            
+
         </li>
-        
+
     </ul>
   </div>
 </body>

@@ -6,11 +6,17 @@
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
   <link rel="stylesheet" media="all" href="docco.css" />
+  <link rel="stylesheet" href="gh-fork-ribbon.css" />
 </head>
 <body>
   <div id="container">
+    <div class="github-fork-ribbon-wrapper left-bottom">
+        <div class="github-fork-ribbon">
+            <a href="https://github.com/mkacz91/PolylineSimplification">Fork me on GitHub</a>
+        </div>
+    </div>
     <div id="background"></div>
-    
+
       <ul id="jump_to">
         <li>
           <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
@@ -18,101 +24,101 @@
           <div id="jump_wrapper">
           <div id="jump_page_wrapper">
             <div id="jump_page">
-              
-                
+
+
                 <a class="source" href="GUI.html">
                   GUI.pde
                 </a>
-              
-                
+
+
                 <a class="source" href="Line.html">
                   Line.pde
                 </a>
-              
-                
+
+
                 <a class="source" href="LineFitter.html">
                   LineFitter.pde
                 </a>
-              
-                
+
+
                 <a class="source" href="Math.html">
                   Math.pde
                 </a>
-              
-                
+
+
                 <a class="source" href="Path.html">
                   Path.pde
                 </a>
-              
-                
+
+
                 <a class="source" href="PathSimplifier.html">
                   PathSimplifier.pde
                 </a>
-              
-                
-                <a class="source" href="PolylineSimplification.html">
+
+
+                <a class="source" href="../index.html">
                   PolylineSimplification.pde
                 </a>
-              
-                
+
+
                 <a class="source" href="SimplePathHull.html">
                   SimplePathHull.pde
                 </a>
-              
+
             </div>
           </div>
         </li>
       </ul>
-    
+
     <ul class="sections">
-        
+
           <li id="title">
               <div class="annotation">
                   <h1>GUI.pde</h1>
               </div>
           </li>
-        
-        
-        
+
+
+
         <li id="section-1">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
-              
+
             </div>
-            
+
             <div class="content"><div class='highlight'><pre><span class="hljs-keyword">import</span> java.util.*;</pre></div></div>
-            
+
         </li>
-        
-        
+
+
         <li id="section-2">
             <div class="annotation">
-              
+
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
               <p>I don’t care. Cheers!</p>
 
             </div>
-            
+
             <div class="content"><div class='highlight'><pre>
 <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Control</span>
 </span>{
   <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> color LIGHT = #EDEDED;
   <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> color MIDDLE = #A89C83;
   <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> color DARK = #<span class="hljs-number">4</span>A4335;
-  
+
   <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> List&lt;Control&gt; controls = <span class="hljs-keyword">new</span> ArrayList&lt;Control&gt;();
   <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> Control dragged = <span class="hljs-keyword">null</span>;
-  
+
   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">drawAll</span><span class="hljs-params">()</span> </span>{
     <span class="hljs-keyword">for</span> (Control control : controls)
       control.draw();
   }
-  
+
   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">mousePressedAll</span><span class="hljs-params">(<span class="hljs-keyword">int</span> mouseX, <span class="hljs-keyword">int</span> mouseY)</span> </span>{
     <span class="hljs-keyword">for</span> (Control control : controls) {
       <span class="hljs-keyword">if</span> (control.contains(mouseX, mouseY) &amp;&amp; control.mousePressed()) {
@@ -122,19 +128,19 @@
     }
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
   }
-  
+
   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">mouseReleasedAll</span><span class="hljs-params">()</span> </span>{
     <span class="hljs-keyword">if</span> (dragged != <span class="hljs-keyword">null</span>) {
       dragged.mouseReleased();
       dragged = <span class="hljs-keyword">null</span>;
     }
   }
-  
+
   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">mouseDraggedAll</span><span class="hljs-params">()</span> </span>{
     <span class="hljs-keyword">if</span> (dragged != <span class="hljs-keyword">null</span>)
       dragged.mouseDragged();
   }
-  
+
   <span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> x, y, width, height;
 
   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Control</span><span class="hljs-params">(<span class="hljs-keyword">float</span> x, <span class="hljs-keyword">float</span> y, <span class="hljs-keyword">float</span> width, <span class="hljs-keyword">float</span> height)</span> </span>{
@@ -144,22 +150,22 @@
     <span class="hljs-keyword">this</span>.height = height;
     controls.add(<span class="hljs-keyword">this</span>);
   }
-  
+
   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">contains</span><span class="hljs-params">(PVector p)</span> </span>{
     <span class="hljs-keyword">return</span> x &lt;= p.x &amp;&amp; p.x &lt;= x + width
         &amp;&amp; y &lt;= p.y &amp;&amp; p.y &lt;= y + height;
   }
-  
+
   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">contains</span><span class="hljs-params">(<span class="hljs-keyword">float</span> x, <span class="hljs-keyword">float</span> y)</span> </span>{
     <span class="hljs-keyword">return</span> contains(<span class="hljs-keyword">new</span> PVector(x, y));
   }
-  
+
   <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span> </span>{ }
-  
+
   <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">mousePressed</span><span class="hljs-params">()</span> </span>{ <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>; }
-  
+
   <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">mouseReleased</span><span class="hljs-params">()</span> </span>{ }
-  
+
   <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">mouseDragged</span><span class="hljs-params">()</span> </span>{ }
 }
 
@@ -167,7 +173,7 @@
 </span>{
   <span class="hljs-keyword">public</span> String value;
   <span class="hljs-keyword">public</span> PFont font;
-  
+
   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Label</span><span class="hljs-params">(
     <span class="hljs-keyword">float</span> x, <span class="hljs-keyword">float</span> y, <span class="hljs-keyword">float</span> width, <span class="hljs-keyword">float</span> height,
     String value, PFont font
@@ -176,7 +182,7 @@
     <span class="hljs-keyword">this</span>.value = value;
     <span class="hljs-keyword">this</span>.font = font;
   }
-  
+
   <span class="hljs-annotation">@Override</span>
   <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span> </span>{
     <span class="hljs-keyword">if</span> (value == <span class="hljs-keyword">null</span> || font == <span class="hljs-keyword">null</span>)
@@ -193,7 +199,7 @@
   <span class="hljs-keyword">public</span> String value;
   <span class="hljs-keyword">public</span> PFont font;
   List&lt;IButtonListener&gt; listeners = <span class="hljs-keyword">new</span> ArrayList&lt;IButtonListener&gt;();
-  
+
   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Button</span><span class="hljs-params">(
     <span class="hljs-keyword">float</span> x, <span class="hljs-keyword">float</span> y, <span class="hljs-keyword">float</span> width, <span class="hljs-keyword">float</span> height,
     String value, PFont font
@@ -202,7 +208,7 @@
     <span class="hljs-keyword">this</span>.value = value;
     <span class="hljs-keyword">this</span>.font = font;
   }
-  
+
   <span class="hljs-annotation">@Override</span>
   <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span> </span>{
     noStroke();
@@ -218,14 +224,14 @@
     fill(DARK);
     text(value, x + (width - tw) / <span class="hljs-number">2</span>, y + (height - th) / <span class="hljs-number">2</span> + ta + <span class="hljs-number">1</span>);
   }
-  
+
   <span class="hljs-annotation">@Override</span>
   <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">mousePressed</span><span class="hljs-params">()</span> </span>{
     <span class="hljs-keyword">for</span> (IButtonListener listener : listeners)
       listener.onClick(<span class="hljs-keyword">this</span>);
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
   }
-  
+
   <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addListener</span><span class="hljs-params">(IButtonListener listener)</span> </span>{
     listeners.add(listener);
   }
@@ -239,11 +245,11 @@
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CheckBox</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Control</span>
 </span>{
   <span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> checked = <span class="hljs-keyword">false</span>;
-  
+
   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">CheckBox</span><span class="hljs-params">(<span class="hljs-keyword">float</span> x, <span class="hljs-keyword">float</span> y, <span class="hljs-keyword">float</span> width, <span class="hljs-keyword">float</span> height)</span> </span>{
     <span class="hljs-keyword">super</span>(x, y, width, height);
   }
-  
+
   <span class="hljs-annotation">@Override</span>
   <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span> </span>{
     rectMode(CORNER);
@@ -256,7 +262,7 @@
       rect(x + margin, y + margin, width - <span class="hljs-number">2</span> * margin, height - <span class="hljs-number">2</span> * margin);
     }
   }
-  
+
   <span class="hljs-annotation">@Override</span>
   <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">mousePressed</span><span class="hljs-params">()</span> </span>{
     checked = !checked;
@@ -268,62 +274,62 @@
 </span>{
   <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> SLIDER_SIZE = <span class="hljs-number">15</span>;
   <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> SLIDE_WEIGHT = <span class="hljs-number">2</span>;
-  
+
   <span class="hljs-keyword">private</span> <span class="hljs-keyword">float</span> value = <span class="hljs-number">0.0f</span>;
-  
+
   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">float</span> <span class="hljs-title">value</span><span class="hljs-params">()</span> </span>{
     <span class="hljs-keyword">return</span> value;
   }
-  
+
   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">setValue</span><span class="hljs-params">(<span class="hljs-keyword">float</span> value)</span> </span>{
     <span class="hljs-keyword">this</span>.value = clamp(value, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>);
   }
-  
+
   <span class="hljs-keyword">private</span> <span class="hljs-keyword">boolean</span> dragging = <span class="hljs-keyword">false</span>;
-  
+
   Slider(<span class="hljs-keyword">float</span> x, <span class="hljs-keyword">float</span> y, <span class="hljs-keyword">float</span> width, <span class="hljs-keyword">float</span> height) {
     <span class="hljs-keyword">super</span>(x, y, width, height);
   }
-  
+
   <span class="hljs-function">PVector <span class="hljs-title">sliderPosition</span><span class="hljs-params">(<span class="hljs-keyword">float</span> value)</span> </span>{
     <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> PVector(
       x + SLIDER_SIZE / <span class="hljs-number">2</span> + value * (width - SLIDER_SIZE),
       y + height / <span class="hljs-number">2</span>
     );
   }
-  
+
   <span class="hljs-annotation">@Override</span>
   <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">draw</span><span class="hljs-params">()</span> </span>{
     PVector p0 = sliderPosition(<span class="hljs-number">0</span>);
     PVector pValue = sliderPosition(value);
     PVector p1 = sliderPosition(<span class="hljs-number">1</span>);
-    
+
     strokeWeight(SLIDE_WEIGHT);
     stroke(DARK);
     line(p0.x, p0.y, p1.x, p1.y);
-    
+
     ellipseMode(CENTER);
     noStroke();
     fill(MIDDLE);
     ellipse(pValue.x, pValue.y, SLIDER_SIZE, SLIDER_SIZE);
   }
-  
+
   <span class="hljs-annotation">@Override</span>
   <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">mousePressed</span><span class="hljs-params">()</span> </span>{
     PVector m = <span class="hljs-keyword">new</span> PVector(mouseX, mouseY);
     dragging = PVector.dist(m, sliderPosition(value)) &lt; SLIDER_SIZE / <span class="hljs-number">2</span>;
     <span class="hljs-keyword">return</span> dragging;
   }
-  
+
   <span class="hljs-annotation">@Override</span>
   <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">mouseDragged</span><span class="hljs-params">()</span> </span>{
     <span class="hljs-keyword">float</span> newValue = (mouseX - sliderPosition(<span class="hljs-number">0</span>).x) / (width - SLIDER_SIZE);
     value = clamp(newValue, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>);
   }
 }</pre></div></div>
-            
+
         </li>
-        
+
     </ul>
   </div>
 </body>
