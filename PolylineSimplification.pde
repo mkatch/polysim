@@ -7,9 +7,10 @@
 // _threshold_, which specifies the maximal distance between a point from
 // original path to the simplified path.
 //
-// The algorithm is, implemented by [`PathSimplifier`](PathSimplifier.html). It
-// receives an instance of [`Path`](PathSimplifier.html) as input and provides
-// a simplified path as result. The simplest use case may be as follows:
+// The algorithm is, implemented by
+// [`PathSimplifier`](docs/PathSimplifier.html). It receives an instance of
+// [`Path`](docs/Path.html) as input and provides a simplified path as result.
+// The simplest use case may be as follows:
 //
 //     Path path = new Path();
 //     float threshold = 0.3f;
@@ -20,7 +21,8 @@
 //     path.addPoint(-4, 1);
 //     Path simple = simplifier.getSimplified();
 //
-// For details, refer to the implementation.
+// The simplifier may be attached to the path at any moment and the simplified
+// path may be retrievied at any time. For details, refer to the implementation.
 //
 // _This file contains the implementation of the demo app. No documentation
 // provided, sorry._
