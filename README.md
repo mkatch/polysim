@@ -8,7 +8,7 @@ _threshold_, which specifies the maximal distance between a point from
 original path to the simplified path.
 
 You can view the detailed description at the
-[GitHub page](http://mkacz91.github.io/PolylineSimplifcation) of this project.
+[GitHub page](http://mkacz91.github.io/PolylineSimplification) of this project.
 You can also grab the executables in under
 [releases](https://github.com/mkacz91/PolylineSimplification/releases)
 
