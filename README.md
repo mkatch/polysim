@@ -7,12 +7,13 @@ a visually similar path, but with less vertices. The restruction criterion is
 _threshold_, which specifies the maximal distance between a point from
 original path to the simplified path.
 
+You can view the detailed description at the [GitHub page](mkacz91.github.io/PolylineSimplifcation) of this project.
+
 ![Demo app screenshot](screenshot.png)
 
-The algorithm is, implemented by
-[`PathSimplifier`](docs/PathSimplifier.html). It receives an instance of
-[`Path`](docs/Path.html) as input and provides a simplified path as result.
-The simplest use case may be as follows:
+The algorithm is, implemented by `PathSimplifier`. It receives an instance of
+`Path` as input and provides a simplified path as result. The simplest use case
+may be as follows:
 
     Path path = new Path();
      float threshold = 0.3f;
