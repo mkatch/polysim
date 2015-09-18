@@ -24,6 +24,8 @@
 //
 // _This file contains the implementation of the demo app. No documentation
 // provided, sorry._
+//
+// ![Demo app screenshot](screenshot.png)
 
 final int MAX_SPARSE_POINT_RATE = 13;
 final int POINT_SIZE = 7;
